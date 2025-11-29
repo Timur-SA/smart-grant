@@ -1,6 +1,9 @@
 import json
 from datetime import datetime
 
+def qr2json():
+    pass
+
 # ========================
 # Генерация списка переводов по примерам
 # ========================

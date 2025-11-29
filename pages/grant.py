@@ -1,5 +1,5 @@
 import streamlit as st
-from SCvalidators.PMvalidator import validate_payments, handlePayments 
+from SCvalidators.PMvalidator import validate_payments, handlePayments, qr2json
 from SChandler import readSC, saveSC
 from SCvalidators.BillValidator import extract_receipt_data_from_image, fetch_receipt
 import json
@@ -31,10 +31,10 @@ st.divider()
 
 st.subheader(f"Оплата средствами гранта")
 
-payment_req = st.file_uploader("Реквизиты", 
+payment_req = qr2json(st.file_uploader("Реквизиты", 
     type=["json"], 
     help="Загрузите реквизиты для оплаты"
-)
+))
 
 
 if(st.button("Оплатить")):
