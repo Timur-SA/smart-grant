@@ -1,0 +1,138 @@
+[
+  {
+    "payer_type": "individual",
+    "inn": "111111111111",
+    "amount": 350000,
+    "date": "2026-03-15",
+    "description": "Оклады разработчиков и архитекторов"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "222222222222",
+    "amount": 400000,
+    "date": "2026-04-15",
+    "description": "Консультационные услуги внешних специалистов"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "333333333333",
+    "amount": 250000,
+    "date": "2026-05-10",
+    "description": "Стипендии аспирантам и студентам"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7712345678",
+    "amount": 30000,
+    "mcc": "5732",
+    "date": "2026-03-20",
+    "description": "Серверное оборудование и сетевые устройства"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7734567890",
+    "amount": 350000,
+    "mcc": "5045",
+    "date": "2026-04-25",
+    "description": "Компьютеры для разработки"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7745678901",
+    "amount": 380000,
+    "mcc": "5734",
+    "date": "2026-05-15",
+    "description": "Лицензии разработки и облачные сервисы"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "444444444444",
+    "amount": 500000,
+    "date": "2026-07-15",
+    "description": "Заработная плата разработчиков"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "555555555555",
+    "amount": 600000,
+    "date": "2026-09-15",
+    "description": "Премии за выполнение этапов"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "666666666666",
+    "amount": 450000,
+    "date": "2026-11-20",
+    "description": "Оплата тестировщиков"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7756789012",
+    "amount": 550000,
+    "mcc": "5732",
+    "date": "2026-08-10",
+    "description": "Дополнительное серверное оборудование"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7767890123",
+    "amount": 350000,
+    "mcc": "5045",
+    "date": "2026-10-15",
+    "description": "Устройства для мониторинга"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7778901234",
+    "amount": 400000,
+    "mcc": "8734",
+    "date": "2026-12-01",
+    "description": "Независимое тестирование безопасности"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7789012345",
+    "amount": 350000,
+    "mcc": "8734",
+    "date": "2027-01-15",
+    "description": "Аудит смарт-контрактов"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "777777777777",
+    "amount": 450000,
+    "date": "2027-03-15",
+    "description": "Зарплата команды поддержки"
+  },
+  {
+    "payer_type": "individual",
+    "inn": "888888888888",
+    "amount": 350000,
+    "date": "2027-05-20",
+    "description": "Консультирование клиентов"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7790123456",
+    "amount": 500000,
+    "mcc": "5732",
+    "date": "2027-04-01",
+    "description": "Облачный хостинг и CDN сервисы"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7701234567",
+    "amount": 300000,
+    "mcc": "5045",
+    "date": "2027-06-10",
+    "description": "Резервное оборудование"
+  },
+  {
+    "payer_type": "legal_entity",
+    "inn": "7712345679",
+    "amount": 250000,
+    "mcc": "5943",
+    "date": "2027-06-25",
+    "description": "Создание учебных материалов и проведение вебинаров"
+  }
+]

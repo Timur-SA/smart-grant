@@ -115,3 +115,24 @@ def validate_payments(json_project, transfer_list):
         "limits_used": limits_used,
         "rules_by_stage": rules_by_stage
     }
+
+def handlePayments(grant, report):
+    updated_grant = grant
+    
+    total_spent = sum(sum(rules.values()) for rules in report["limits_used"].values())
+    updated_grant['grant_metadata']['total_budget'] -= total_spent
+
+
+    for stage_id, rules in report["limits_used"].items():       # Обрабатываем каждый этап и правило
+        for stage in updated_grant['stages']:                   # Находим соответствующий этап в гранте
+            if stage['stage_id'] == stage_id:                   # Обрабатываем каждое правило на этом этапе
+                for rule_id, used_amount in rules.items():      # Находим правило и вычитаем использованную сумму из его лимита
+                    for rule in stage['spending_rules']:
+                        if rule['rule_id'] == rule_id:          # Вычитаем использованную сумму из лимита правила
+                            if 'limit' in rule:
+                                rule['limit'] -= used_amount
+                            rule['spent'] = rule.get('spent', 0) + used_amount
+                            break
+                break
+    
+    return updated_grant

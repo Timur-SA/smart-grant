@@ -3,12 +3,13 @@ import csv
 from pathlib import Path
 from docx import Document
 from openai import OpenAI
+from config import NVIDIA_API_SC
 
 class SmetaParser:
     """Библиотека для парсинга DOCX смет в JSON с MCC кодами"""
     
-    def __init__(self, api_key=None, mcc_csv_path="mcc_codes.csv"):
-        self.api_key = api_key or "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"
+    def __init__(self, api_key=None, mcc_csv_path="examples/mcc_codes.csv"):
+        self.api_key = api_key or NVIDIA_API_SC
         self.mcc_csv_path = mcc_csv_path
         
         self.client = OpenAI(

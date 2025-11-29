@@ -1,6 +1,6 @@
 import streamlit as st
-from SCvalidators.PMvalidator import validate_payments 
-from SChandler import readSC
+from SCvalidators.PMvalidator import validate_payments, handlePayments 
+from SChandler import readSC, saveSC
 import json
 
 st.set_page_config(page_title="МойГрант", page_icon="💰")
@@ -32,4 +32,6 @@ if(st.button("Оплатить")):
     payment_report = validate_payments(readSC(grant_name), json.load(payment_req))
     if(payment_report["errors"]): 
         for error in payment_report["errors"]: st.write(error)
-    else: st.succes("Оплачено!")
+    else: 
+        st.success("Оплачено!")
+        saveSC(grant_name, handlePayments(readSC(grant_name), payment_report))

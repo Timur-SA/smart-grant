@@ -1,7 +1,7 @@
 {
   "grant_metadata": {
     "name": "Создание системы управления цепочками поставок на основе блокчейна",
-    "total_budget": 8500000,
+    "total_budget": 1690000,
     "currency": "RUB",
     "start_date": "2026-02-01",
     "end_date": "2027-06-30",
@@ -22,19 +22,20 @@
           "rule_id": "1.1",
           "rule_type": "individuals",
           "rule_name": "Выплаты физическим лицам",
-          "limit": 1200000,
+          "limit": 200000,
           "allowed_categories": [
             "Оклады разработчиков и архитекторов",
             "Стипендии аспирантам и студентам",
             "Консультационные услуги внешних специалистов"
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 1000000
         },
         {
           "rule_id": "1.2",
           "rule_type": "legal_entities",
           "rule_name": "Закупки оборудования",
-          "limit": 900000,
+          "limit": 140000,
           "allowed_categories": [
             {
               "category": "Серверное оборудование и сетевые устройства",
@@ -61,7 +62,8 @@
               ]
             }
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 760000
         },
         {
           "rule_id": "1.3",
@@ -91,7 +93,8 @@
               ]
             }
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 0
         }
       ]
     },
@@ -108,19 +111,20 @@
           "rule_id": "2.1",
           "rule_type": "individuals",
           "rule_name": "Выплаты физическим лицам",
-          "limit": 2000000,
+          "limit": 450000,
           "allowed_categories": [
             "Заработная плата разработчиков",
             "Премии за выполнение этапов",
             "Оплата тестировщиков"
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 1550000
         },
         {
           "rule_id": "2.2",
           "rule_type": "legal_entities",
           "rule_name": "Закупки оборудования",
-          "limit": 1000000,
+          "limit": 100000,
           "allowed_categories": [
             {
               "category": "Дополнительное серверное оборудование",
@@ -139,13 +143,14 @@
               ]
             }
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 900000
         },
         {
           "rule_id": "2.3",
           "rule_type": "legal_entities",
           "rule_name": "Услуги тестирования и валидации",
-          "limit": 800000,
+          "limit": 50000,
           "allowed_categories": [
             {
               "category": "Независимое тестирование безопасности",
@@ -166,7 +171,8 @@
               ]
             }
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 750000
         }
       ]
     },
@@ -183,18 +189,19 @@
           "rule_id": "3.1",
           "rule_type": "individuals",
           "rule_name": "Выплаты физическим лицам",
-          "limit": 1000000,
+          "limit": 200000,
           "allowed_categories": [
             "Зарплата команды поддержки",
             "Консультирование клиентов"
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 800000
         },
         {
           "rule_id": "3.2",
           "rule_type": "legal_entities",
           "rule_name": "Инфраструктура и хостинг",
-          "limit": 900000,
+          "limit": 100000,
           "allowed_categories": [
             {
               "category": "Облачный хостинг",
@@ -219,30 +226,32 @@
               ]
             }
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 800000
         },
         {
           "rule_id": "3.3",
           "rule_type": "legal_entities",
           "rule_name": "Обучение и документирование",
-          "limit": 300000,
+          "limit": 50000,
           "allowed_categories": [
             {
               "category": "Создание учебных материалов",
               "mcc_codes": [
-                "5942",
+                "5732",
                 "5943"
               ]
             },
             {
               "category": "Проведение вебинаров",
               "mcc_codes": [
-                "8299",
-                "7999"
+                "5732",
+                "5943"
               ]
             }
           ],
-          "transactions": []
+          "transactions": [],
+          "spent": 250000
         }
       ]
     }
