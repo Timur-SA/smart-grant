@@ -178,6 +178,7 @@ def parse_smeta(docx_path, output_json_path=None, verbose=True):
     Returns:
         dict: JSON структура сметы
     """
+
     parser = SmetaParser()
     result = parser.parse(docx_path, verbose=verbose)
     

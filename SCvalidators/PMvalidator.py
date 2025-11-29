@@ -1,8 +1,24 @@
 import json
 from datetime import datetime
+from PIL import Image
+from pyzbar.pyzbar import decode
 
-def qr2json():
-    pass
+def qr2json(qr):
+    if qr is None:
+        return None
+    
+    try:
+        image = Image.open(qr)
+        decoded_objects = decode(image)
+        
+        if decoded_objects:
+            qr_data = decoded_objects[0].data.decode('utf-8')
+            return qr_data
+        else:
+            return None
+    except Exception as e:
+        return None
+
 
 # ========================
 # Генерация списка переводов по примерам
