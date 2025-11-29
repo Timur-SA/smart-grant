@@ -15,9 +15,8 @@ from config import NVIDIA_API_BILL
 BASE_URL = "https://kkt-online.nalog.ru"
 NVIDIA_API_KEY = NVIDIA_API_BILL
 
-def extract_receipt_data_from_image(image_path):
-    with open(image_path, "rb") as f:
-        image_b64 = base64.b64encode(f.read()).decode()
+def extract_receipt_data_from_image(image):
+    image_b64 = base64.b64encode(image.getvalue()).decode()
 
     invoke_url = "https://integrate.api.nvidia.com/v1/chat/completions"
     
@@ -53,7 +52,7 @@ Create json in this format:
     "summ": "Сумма, разделитель - запятая"
 }}
 
-Некоторые значения статичны 
+Некоторые значения статичны. Если значения не найдены, укажи нули во всех пунктах
 <img src="data:image/png;base64,{image_b64}" />"""
             }
         ],
@@ -105,10 +104,10 @@ def get_cookies_via_browser():
     chrome_options.set_capability("pageLoadStrategy", "eager")
     chrome_options.add_argument("--disable-application-cache")
 
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+
     try:
-        service = Service(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service, options=chrome_options)
-        
         driver.set_page_load_timeout(10)
         driver.set_script_timeout(5)
         
