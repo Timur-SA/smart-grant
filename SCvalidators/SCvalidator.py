@@ -7,10 +7,11 @@ from config import NVIDIA_API_SC
 
 class SmetaParser:
     """Библиотека для парсинга DOCX смет в JSON с MCC кодами"""
-    
-    def __init__(self, api_key=None, mcc_csv_path="examples/mcc_codes.csv"):
+
+    def __init__(self, api_key=None, mcc_csv_path="SCValidators/examples/mcc_codes.csv", preset={"TEMP":0.15, "TOP-P":0.7 }):
         self.api_key = api_key or NVIDIA_API_SC
         self.mcc_csv_path = mcc_csv_path
+        self.preset = preset
         
         self.client = OpenAI(
             base_url="https://integrate.api.nvidia.com/v1",
@@ -137,10 +138,10 @@ JSON:
         prompt = self._create_prompt(smeta_text)
         
         completion = self.client.chat.completions.create(
-            model="deepseek-ai/deepseek-v3.1-terminus",
+            model="deepseek-ai/deepseek-v3.2",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.15,
-            top_p=0.7,
+            temperature=self.preset["TEMP"],
+            top_p=self.preset["TOP-P"],
             max_tokens=10000,
             stream=True
         )
@@ -165,7 +166,6 @@ JSON:
         return result
 
 
-# Простая функция для быстрого использования
 def parse_smeta(docx_path, output_json_path=None, verbose=True):
     """
     Быстрый парсинг сметы

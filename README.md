@@ -15,6 +15,7 @@ SmartGrant — инновационное решение для управлен
 - Python 3.13
 - Windows
 - Зависимости из requirements.txt
+- Доступ к Nvidia API
 
 ## Установка
 
@@ -29,8 +30,7 @@ pip install -r requirements.txt
 3. Создайте файл конфигурации `config.py` в корневой директории проекта со следующим содержимым:
 
 ```python
-NVIDIA_API_SC   = "ваш_nvidia_api_ключ_sc"
-NVIDIA_API_BILL = "ваш_nvidia_api_ключ_bill"
+LLM_API_URL = "ВАШ API-КЛЮЧ NVIDIA"
 ```
 
 ## Структура проекта
