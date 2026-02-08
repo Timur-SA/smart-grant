@@ -8,7 +8,7 @@ from config import NVIDIA_API_SC
 class SmetaParser:
     """Библиотека для парсинга DOCX смет в JSON с MCC кодами"""
 
-    def __init__(self, api_key=None, mcc_csv_path="SCValidators/examples/mcc_codes.csv", preset={"TEMP":0.15, "TOP-P":0.7 }):
+    def __init__(self, api_key=None, mcc_csv_path="SCValidators/examples/mcc_codes.csv", preset={"MODEL": "deepseek-ai/deepseek-v3.2", "TEMP":0.15, "TOP-P":0.7}):
         self.api_key = api_key or NVIDIA_API_SC
         self.mcc_csv_path = mcc_csv_path
         self.preset = preset
@@ -21,7 +21,6 @@ class SmetaParser:
         self.mcc_codes = self._load_mcc_codes()
     
     def _load_mcc_codes(self):
-        """Загружает MCC коды из CSV"""
         mcc_data = []
         try:
             with open(self.mcc_csv_path, 'r', encoding='utf-8') as f:
@@ -33,12 +32,10 @@ class SmetaParser:
         return mcc_data
     
     def _read_docx(self, file_path):
-        """Читает DOCX файл"""
         doc = Document(file_path)
         return "\n".join([p.text for p in doc.paragraphs if p.text.strip()])
     
     def _create_prompt(self, smeta_text):
-        """Создает промпт для нейросети"""
         mcc_list = "\n".join(self.mcc_codes)
         
         return f"""Преобразуй смету в JSON. Для каждой категории юрлиц подбери ВСЕ релевантные MCC коды.
@@ -105,7 +102,6 @@ JSON:
 Верни ТОЛЬКО JSON."""
     
     def _extract_json(self, text):
-        """Извлекает JSON из ответа"""
         start = text.find('{')
         end = text.rfind('}') + 1
         if start != -1 and end > start:
@@ -115,16 +111,17 @@ JSON:
                 return None
         return None
     
-    def parse(self, docx_path, verbose=True):
+    def parse(self, docx_path, verbose=True, log=False):
         """
         Парсит DOCX смету в JSON
         
         Args:
-            docx_path (str): путь к DOCX файлу
-            verbose (bool): выводить ли прогресс
+            docx_path (str): Путь к DOCX файлу
+            verbose (bool): Выводить ли прогресс
+            log (bool): Тип ответа (False: JSON/None, True: isSucess, JSON/Response)
         
         Returns:
-            dict: JSON структура сметы или None при ошибке
+            См. аргумент log
         """
         if verbose:
             print(f"Читаю {docx_path}...")
@@ -138,7 +135,7 @@ JSON:
         prompt = self._create_prompt(smeta_text)
         
         completion = self.client.chat.completions.create(
-            model="deepseek-ai/deepseek-v3.2",
+            model=self.preset["MODEL"],
             messages=[{"role": "user", "content": prompt}],
             temperature=self.preset["TEMP"],
             top_p=self.preset["TOP-P"],
@@ -158,10 +155,10 @@ JSON:
         
         result = self._extract_json(response)
         
-        if not result and verbose:
-            print("Ошибка парсинга JSON")
-            with open("debug_response.txt", "w", encoding="utf-8") as f:
-                f.write(response)
+        if not result and log:
+            return (False, response)
+        if log:
+            return (True, result)
         
         return result
 
