@@ -1,9 +1,8 @@
 config.py
-__pycache__/config.cpython-313.pyc
+experiments/
 SmartContracts/
-**/experiments/
-/experiments
+__pycache__/
+.vscode/
 *.pyc
-pycache
+.venv/
 .env
-.venv

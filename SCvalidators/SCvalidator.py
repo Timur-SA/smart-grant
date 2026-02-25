@@ -15,7 +15,8 @@ class SmetaParser:
         
         self.client = OpenAI(
             base_url="https://integrate.api.nvidia.com/v1",
-            api_key=self.api_key
+            api_key=self.api_key,
+            timeout=300.0
         )
         
         self.mcc_codes = self._load_mcc_codes()
@@ -139,21 +140,15 @@ JSON:
             messages=[{"role": "user", "content": prompt}],
             temperature=self.preset["TEMP"],
             top_p=self.preset["TOP-P"],
-            max_tokens=10000,
-            stream=True
+            max_tokens=8192,
+            stream=False
         )
         
-        response = ""
-        for chunk in completion:
-            if chunk.choices[0].delta.content:
-                response += chunk.choices[0].delta.content
-                if verbose:
-                    print(".", end="", flush=True)
+        response = completion.choices[0].message.content
+        result = self._extract_json(response)
         
         if verbose:
             print("\nГотово")
-        
-        result = self._extract_json(response)
         
         if not result and log:
             return (False, response)

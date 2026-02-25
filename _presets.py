@@ -1,49 +1,13 @@
-OldPresets = [
-    {
-        "name": "Proposed",
-        "temp": 0.15,
-        "top_p": 0.7
-    },
-    {
-        "name": "Baseline",
-        "temp": 0.9,
-        "top_p": 0.95
-    },
-    {
-        "name": "Chaotic",
-        "temp": 1.5,
-        "top_p": 1
-    },
-    {
-        "name": "Strict",
-        "temp": 0.01,
-        "top_p": 0.1
-    }
+MODELS = [
+    "meta/llama-3.3-70b-instruct",
+    "mistralai/mistral-small-3.1-24b-instruct-2503",
+    "mistralai/mistral-large-3-675b-instruct-2512",
+    "deepseek-ai/deepseek-v3.2"
 ]
 
-MainPresets = [
-    {
-        "name": "Proposed",
-        "model": "meta/llama-3.3-70b-instruct",
-        "temp": 0.15,
-        "top_p": 0.7
-    },
-    {
-        "name": "Baseline",
-        "model": "meta/llama-3.3-70b-instruct",
-        "temp": 0.9,
-        "top_p": 0.95
-    },
-    {
-        "name": "Chaotic",
-        "model": "meta/llama-3.3-70b-instruct",
-        "temp": 1.5,
-        "top_p": 1
-    },
-    {
-        "name": "Strict",
-        "model": "meta/llama-3.3-70b-instruct",
-        "temp": 0.01,
-        "top_p": 0.1
-    }
+PARAM_SETS = [
+    {"name": "proposed", "temp": 0.15, "top_p": 0.70},
+    {"name": "strict", "temp": 0.01, "top_p": 0.10},
+    {"name": "baseline", "temp": 0.90, "top_p": 0.95},
+    {"name": "chaotic", "temp": 1.50, "top_p": 1.00},
 ]
